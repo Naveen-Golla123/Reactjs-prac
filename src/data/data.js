@@ -28,7 +28,7 @@ export const dbItemsData = {
             name: "Chicken Reshmi",
             price: "14.99",
             isAddedToCart: false
-        },
+        },  
         {
             id: 2,
             name: "Chicken Biriyani",

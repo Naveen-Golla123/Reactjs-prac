@@ -1,8 +1,8 @@
-import React from 'react'
+import {useState} from 'react'
 import Delivery from '../img/delivery.png';
 import HeroBg from '../img/heroBg.png'
 import ChickenReshmi from '../img/Chicken_Reshmi.png'
-import ChickenLeg from '../img/Chicken_Leg.png'
+import ChickenLeg from '../img/Chicken_Leg.png';
 
 const heropData = [
   { id: 1, name: 'Chikcen Reshmi', price: "15.99", imageSrc: ChickenReshmi },
@@ -12,6 +12,10 @@ const heropData = [
 ]
 
 const HomeContainer = () => {
+
+  const [open, setOpen] = useState(true);
+  const handleOpen = () => setOpen(!open);
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full h-auto' id="home">
       <div className='py-2 flex flex-col items-start justify-center gap-6'>
@@ -35,13 +39,12 @@ const HomeContainer = () => {
           Order Now
         </button>
       </div>
-      <div className='py-2 flex-1 flex items-center relative'>
-        <img src={HeroBg} className="ml-auto h-auto md:w-1/2 w-full z-1 md:h-420 lg:h-650" alt="hero-bg" />
-
-        <div className='w-full h-auto md:w-full md:h-full  absolute top-0 left-0 flex items-center justify-center px-2 py-8'>
+      <div className='py-2 flex-1 flex items-center relative z-50'>
+        <img src={HeroBg} className="ml-auto h-auto md:w-1/2 w-full z-1 md:h-420 lg:h-650 " alt="hero-bg" />
+        <div className='w-full h-auto md:w-full md:h-full absolute top-0 left-0 flex items-center justify-center px-2 py-8'>
           <div className='w-full h-auto flex items-center justify-center flex-wrap gap-4 lg:gap-10'>
             {heropData && heropData.map(n => (
-              <div className='md:w-190 w-[160px] p-1 bg-cardOverlay rounded-2xl flex flex-col items-center drop-shadow-lg min-h-210'>
+              <div className='md:w-190 w-[160px] p-1 rounded-2xl flex bg-cardOverlay flex-col items-center drop-shadow-lg min-h-210'>
                 <img src={n.imageSrc} className="w-50" alt="ChieckReshmi" />
                 <p className='text-[18px] font-semibold text-textColor my-2'>{n.name}</p>
                 <p className='text-sm font-semibold text-headingColor'><span className='text-red-500'>$</span>{n.price}</p>

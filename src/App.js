@@ -2,7 +2,7 @@ import React from "react"
 import { Route, Routes } from 'react-router-dom'
 import { Header } from "./components"
 import { CreateContainer } from './components'
-import { MainContainer } from './components'
+import { MainContainer, ManagerItems } from './components'
 import { AnimatePresence } from "framer-motion"
 const App = () => {
     return (
@@ -13,6 +13,7 @@ const App = () => {
                     <Routes>
                         <Route path="/*" element={<MainContainer />} />
                         <Route path="/create" element={<CreateContainer />} />
+                        <Route path="/manage" element={<ManagerItems />}/>
                     </Routes>
                 </main>
             </div>

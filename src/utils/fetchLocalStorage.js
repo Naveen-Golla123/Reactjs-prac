@@ -1,7 +1,7 @@
 const fetchUserData = ()=> {
-    console.log(localStorage.getItem('user'))
+    console.log(localStorage.getItem('userInfo'))
     const userInfo = 
-                localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+                localStorage.getItem('userInfo') != null ? JSON.parse(localStorage.getItem('userInfo')) : localStorage.clear();
     console.log(userInfo)
     return userInfo
 }
