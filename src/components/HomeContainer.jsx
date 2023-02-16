@@ -3,6 +3,7 @@ import Delivery from '../img/delivery.png';
 import HeroBg from '../img/heroBg.png'
 import ChickenReshmi from '../img/Chicken_Reshmi.png'
 import ChickenLeg from '../img/Chicken_Leg.png';
+import {Helmet} from 'react-helmet';
 
 const heropData = [
   { id: 1, name: 'Chikcen Reshmi', price: "15.99", imageSrc: ChickenReshmi },
@@ -13,11 +14,16 @@ const heropData = [
 
 const HomeContainer = () => {
 
+  const [title,setTitle] = useState("Dummy");
+
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(!open);
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full h-auto' id="home">
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className='py-2 flex flex-col items-start justify-center gap-6'>
         <div className='flex items-center gap-2 justify-center bg-orange-100 rounded-full px-5 py-2'>
           <p className='text-base text-orange-500 font-semibold'>Events and Catering are our special</p>
