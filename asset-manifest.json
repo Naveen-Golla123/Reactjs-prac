@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/reactjs-prac/static/css/main.5e3f0d0f.css",
-    "main.js": "/reactjs-prac/static/js/main.50084563.js",
-    "static/media/Chicken_Reshmi.png": "/reactjs-prac/static/media/Chicken_Reshmi.56cd4eee91b0c57b925f.png",
-    "static/media/Chicken_Leg.png": "/reactjs-prac/static/media/Chicken_Leg.cf8597c59130ef281c3f.png",
-    "static/media/flair_tikka.jpeg": "/reactjs-prac/static/media/flair_tikka.4a97d5b0725b5c38395c.jpeg",
-    "static/media/Logo.jpg": "/reactjs-prac/static/media/Logo.9c74c6005b8a5648eb02.jpg",
-    "static/media/heroBg.png": "/reactjs-prac/static/media/heroBg.c43c4862422e70d88698.png",
-    "static/media/delivery.png": "/reactjs-prac/static/media/delivery.bf9130a0962fbe091abc.png",
-    "static/media/avatar.png": "/reactjs-prac/static/media/avatar.68cdc4513e601d28a382.png",
-    "index.html": "/reactjs-prac/index.html",
-    "main.5e3f0d0f.css.map": "/reactjs-prac/static/css/main.5e3f0d0f.css.map",
-    "main.50084563.js.map": "/reactjs-prac/static/js/main.50084563.js.map"
+    "main.css": "/Reactjs-prac/static/css/main.5e3f0d0f.css",
+    "main.js": "/Reactjs-prac/static/js/main.01070cd0.js",
+    "static/media/Chicken_Reshmi.png": "/Reactjs-prac/static/media/Chicken_Reshmi.56cd4eee91b0c57b925f.png",
+    "static/media/Chicken_Leg.png": "/Reactjs-prac/static/media/Chicken_Leg.cf8597c59130ef281c3f.png",
+    "static/media/flair_tikka.jpeg": "/Reactjs-prac/static/media/flair_tikka.4a97d5b0725b5c38395c.jpeg",
+    "static/media/Logo.jpg": "/Reactjs-prac/static/media/Logo.9c74c6005b8a5648eb02.jpg",
+    "static/media/heroBg.png": "/Reactjs-prac/static/media/heroBg.c43c4862422e70d88698.png",
+    "static/media/delivery.png": "/Reactjs-prac/static/media/delivery.bf9130a0962fbe091abc.png",
+    "static/media/avatar.png": "/Reactjs-prac/static/media/avatar.68cdc4513e601d28a382.png",
+    "index.html": "/Reactjs-prac/index.html",
+    "main.5e3f0d0f.css.map": "/Reactjs-prac/static/css/main.5e3f0d0f.css.map",
+    "main.01070cd0.js.map": "/Reactjs-prac/static/js/main.01070cd0.js.map"
   },
   "entrypoints": [
     "static/css/main.5e3f0d0f.css",
-    "static/js/main.50084563.js"
+    "static/js/main.01070cd0.js"
   ]
 }
