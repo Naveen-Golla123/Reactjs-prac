@@ -11,7 +11,7 @@ const MenuContainer = () => {
     const [{ visibilityMap }, dispatch] = useStateValue();
     
     useEffect(() => {
-        fetch("http://localhost:3002/api/Items", { method: "GET" }
+        fetch("http://localhost:3000/api/Items", { method: "GET" }
         ).then(res => res.json()).then(res => {
             processMenuItems(res);
         }).catch(err => {

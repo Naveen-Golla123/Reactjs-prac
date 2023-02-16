@@ -12,7 +12,7 @@ const App = () => {
                 <main className="md:px-16 px-4 py-4 w-full mt-16 md:mt-20">
                     <Routes>
                         <Route path="/*" element={<MainContainer />} />
-                        <Route path="/create" element={<CreateContainer />} />
+                        <Route path="/item/:mode/:id" element={<CreateContainer />} />
                         <Route path="/manage" element={<ManagerItems />}/>
                     </Routes>
                 </main>

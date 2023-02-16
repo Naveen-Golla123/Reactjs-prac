@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { MdFastfood, MdCloudUpload, MdDelete, MdAttachMoney } from 'react-icons/md'
+import { useParams } from 'react-router-dom';
 import Loader from './Shared/Loader';
 
 const CreateContainer = () => {
 
   const [name, setName] = useState("");
+  const [itemId, setItemId] = useState(0);
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [isValidForSave, setSaveValidation] = useState(false);
@@ -14,6 +16,26 @@ const CreateContainer = () => {
   const [imageAsset, setImageAsset] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   var [categoryList, setCategoryList] = useState([]);
+
+  var params = useParams();
+
+  useEffect(() => {
+    if (params.mode == 'create') {
+
+    } else if (params.mode == 'edit') {
+      // get item by id and assign all properties.
+      fetch(`http://localhost:3000/api/items/${params.id}`, {
+        method: "GET"
+      }).then(res => res.json()).then(res => {
+        setName(res.name);
+        setItemId(res.id);
+        setPrice(parseFloat(res.price));
+        setImageUrl(res.imgURL)
+        setCategory(res.itemCategory.id)
+        console.log(res)
+      })
+    }
+  }, []);
 
   const uploadImage = (event) => {
 
@@ -27,17 +49,16 @@ const CreateContainer = () => {
 
   const onItemSaved = () => {
     // Make an API call
-
     var formdata = new FormData();
-
-    //add form properties 
-    formdata.append("file", imageAsset, imageAsset.name);
+    if (imageAsset)
+      formdata.append("file", imageAsset, imageAsset.name);
     formdata.append("price", price);
     formdata.append("name", name);
     formdata.append("categoryId", category.toString());
+    formdata.append("id", itemId);
 
     var requestOptions = {
-      method: 'POST',
+      method: params.mode == 'create' ? 'POST' : 'PATCH',
       body: formdata,
       // headers: {
       //   "Content-type": "multipart/form-data; boundary=<calculated when request is sent>"
@@ -45,14 +66,14 @@ const CreateContainer = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3002/Items", requestOptions)
+    fetch("http://localhost:3000/api/Items", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
 
   useEffect(() => {
-    fetch("http://localhost:3002/Setting/GetAllCategories", { method: "GET" }
+    fetch("http://localhost:3000/api/Setting/GetAllCategories", { method: "GET" }
     ).then(res => res.json()).then(res => {
       console.log(res)
       setCategoryList(res)
@@ -71,7 +92,7 @@ const CreateContainer = () => {
     checkIsValidForSave();
   }
 
-  const deleteImageAsset = ()=> {
+  const deleteImageAsset = () => {
     setImageAsset(null);
     checkIsValidForSave();
   }
@@ -95,8 +116,8 @@ const CreateContainer = () => {
   }
 
   const isImageValid = () => {
-    console.log(imageAsset);
-    return imageAsset;
+    console.log(imageUrl && imageUrl.length > 1);
+    return imageUrl && imageUrl.length > 1;
   }
 
   const isItemNameValid = () => {
@@ -108,11 +129,11 @@ const CreateContainer = () => {
       <div className='w-[90%] md:w-[75%] border border-gray-300 rounded-r-md flex flex-col items-center justify-center gap-4 p-3'>
         <div className='w-full flex items-center border-b border-gray-300 gap-5 p-3'>
           <MdFastfood className='text-xl text-gray-700' />
-          <input type="text" required className='w-full h-full border-none text-lg bg-transparent outline-none' placeholder='Item Name..' onChange={(e) => setItemName(e)} />
+          <input type="text" required className='w-full h-full border-none text-lg bg-transparent outline-none' value={name} placeholder='Item Name..' onChange={(e) => setItemName(e)} />
         </div>
 
         <div className='w-full flex items-center'>
-          <select className='w-full bg-transparent p-2 border rounded-md outline-none' onChange={onCategoryChanged}>
+          <select value={category} className='w-full bg-transparent p-2 border rounded-md outline-none' onChange={onCategoryChanged}>
             <option value="other">Select Category</option>
             {
               categoryList && categoryList.map(category => (
@@ -130,7 +151,7 @@ const CreateContainer = () => {
               <Loader />
             ) : <>
               {
-                !imageAsset ? <>
+                !imageUrl && imageUrl.length > 1 ? <>
                   <label className='w-full h-full flex items-center justify-center cursor-pointer'>
                     <div className='w-full h-full flex items-center justify-center  gap-4'>
                       <MdCloudUpload className='text-gray-600 text-5xl' />
@@ -153,7 +174,7 @@ const CreateContainer = () => {
 
         <div className='w-full flex items-center gap-2 border-b-2'>
           <MdAttachMoney className='text-xl' />
-          <input type="number" className='p-2 w-full h-full text-lg bg-transparent outline-none' placeholder='Price' onChange={event => {setPrice(parseFloat(event.target.value)); checkIsValidForSave();}} />
+          <input type="number" className='p-2 w-full h-full text-lg bg-transparent outline-none' value={price} placeholder='Price' onChange={event => { setPrice(parseFloat(event.target.value)); checkIsValidForSave(); }} />
         </div>
 
         <div className='w-full h-auto flex items-center'>

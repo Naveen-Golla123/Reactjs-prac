@@ -36,7 +36,7 @@ const Header = () => {
         var body = {
             accessToken: codeResponse.access_token
         }
-        fetch("http://localhost:3002/api/Auth", {
+        fetch("http://localhost:3000/api/Auth", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
